@@ -12,12 +12,12 @@ export default function Feeling() {
 
     const postFeelingRating = (event) => {
         event.preventDefault();
+        console.log("we are posting an feeling item to store");
+
         dispatch({
             type: 'ADD_FEELING',
             payload: feelingRating
-          })
-        // add the router to next page
-        
+          })        
 
     }
 
@@ -31,11 +31,11 @@ export default function Feeling() {
                 type='number'
                 value={feelingRating}
                 />
-                <Link to='/understanding'>
-                <button>
-                    Next
-                </button>
-                </Link>
+                <div>
+                    <Link to='/understanding'></Link>
+                    <button type="submit"> Next
+                    </button>
+                </div>
             </form>
         </div>
     )

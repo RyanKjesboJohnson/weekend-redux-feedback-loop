@@ -6,8 +6,16 @@ const feedbackReducer = (state = {}, action) => {
       const feelingParameter = action.payload;
       return state.feeling = Number(feelingParameter);
   }
-    return state;
-  }
+    if(action.type === 'ADD_UNDERSTANDING'){
+    const understandingParameter = action.payload;
+    return state.understanding = Number(understandingParameter);
+}
+    if(action.type === 'ADD_SUPPORT'){
+    const supportParameter = action.payload;
+    return state.support = Number(supportParameter);
+}
+  return state;
+}
   
   const store = createStore(
     combineReducers({
