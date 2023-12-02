@@ -1,5 +1,5 @@
 import logger from 'redux-logger';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, appReducer } from 'redux';
 
 const feelingReducer = (state = '', action) => {
     if(action.type === 'ADD_FEELING'){
@@ -31,8 +31,10 @@ const commentsReducer = (state = '', action) => {
     const commentsParameter = action.payload;
     return commentsParameter
 }
+
   return state;
 }
+
   
   const store = createStore(
     combineReducers({
