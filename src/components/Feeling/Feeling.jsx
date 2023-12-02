@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 export default function Feeling() {
     let [feelingRating, setFeelingRating] = useState('')
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleFeelingRating = (event) => {
         setFeelingRating (event.target.value)
@@ -17,7 +18,8 @@ export default function Feeling() {
         dispatch({
             type: 'ADD_FEELING',
             payload: feelingRating
-          })        
+          })    
+        history.push('/understanding');
 
     }
 
@@ -28,12 +30,12 @@ export default function Feeling() {
                 <form onSubmit={(event) => postFeelingRating(event)}>
                 <input
                 onChange={handleFeelingRating}
+                data-testid="input"
                 type='number'
                 value={feelingRating}
                 />
                 <div>
-                    <Link to='/understanding'></Link>
-                    <button type="submit"> Next
+                    <button data-testid="next" type="submit"> Next
                     </button>
                 </div>
             </form>

@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 export default function Understanding() {
     let [understandingRating, setUnderstandingRating] = useState('')
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleUnderstandingRating = (event) => {
         setUnderstandingRating (event.target.value)
@@ -17,6 +18,7 @@ export default function Understanding() {
             type: 'ADD_UNDERSTANDING',
             payload: understandingRating
           })        
+        history.push('/support')
 
     }
 
@@ -29,10 +31,10 @@ export default function Understanding() {
                 onChange={handleUnderstandingRating}
                 type='number'
                 value={understandingRating}
+                data-testid="input"
                 />
                 <div>
-                    <Link to='/support'></Link>
-                    <button type="submit"> Next
+                    <button data-testid="next" type="submit"> Next
                     </button>
                 </div>
             </form>
