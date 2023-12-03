@@ -1,6 +1,18 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import HorizontalLinearStepper from "../Stepper/Stepper"
+import {styled} from "@mui/material/styles"
+import { Box } from "@mui/material"
+import TextField from '@mui/material/TextField';
+import { Button } from "@mui/material"
+
+
+const Div = styled('div')(({ theme }) => ({
+    ...theme.typography.button,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(1),
+  }));
 
 export default function Understanding() {
     const getUnderstandingElement = useSelector(store => store.understandingReducer)
@@ -28,20 +40,22 @@ export default function Understanding() {
 
 
     return(
-        <div>
+        <Div>
+            <HorizontalLinearStepper activeStepProp={1}/>
             <h3>How well are you understanding the content?</h3>
-            <form onSubmit={(event) => postUnderstandingRating(event)}>
-                <input
+            <Box component="form" onSubmit={(event) => postUnderstandingRating(event)}>
+                <TextField
+                variant="filled"
                 onChange={handleUnderstandingRating}
                 type='number'
                 value={understandingRating}
                 data-testid="input"
                 />
                 <div>
-                    <button data-testid="next" type="submit"> Next
-                    </button>
+                <Button variant="contained" data-testid="next" type="submit"> Next
+                </Button>
                 </div>
-            </form>
-        </div>
+            </Box>
+        </Div>
     )
 }
