@@ -1,9 +1,11 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 
 export default function Feeling() {
-    let [feelingRating, setFeelingRating] = useState('')
+    const getFeelingElement = useSelector(store => store.feelingReducer)
+    let [feelingRating, setFeelingRating] = useState(getFeelingElement)
+    
     const dispatch = useDispatch();
     const history = useHistory();
 

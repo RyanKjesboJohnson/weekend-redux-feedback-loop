@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Review() {
     // const [storeElements, setStoreElements] = useState('');
@@ -29,11 +30,38 @@ export default function Review() {
     return(
         <>
         <h3>Review your feedback!</h3>
-        <p>{getStoreElements.feelingReducer}</p>
-        <p>{getStoreElements.understandingReducer}</p>
-        <p>{getStoreElements.supportReducer}</p>
-        <p>{getStoreElements.commentsReducer}</p>
-        <button onClick={postFeedback} data-testid="next">Submit</button>
+        <div>
+            <p>How are you feeling today?</p>
+            {getStoreElements.feelingReducer}
+            <Link to='/'>
+                <button className="editButton" >Edit</button>
+            </Link>
+        </div>
+        <div>
+            <p>How well are you understanding the content?</p>
+            {getStoreElements.understandingReducer}
+            <Link to='/understanding'>
+                <button className="editButton">Edit</button>
+            </Link>
+        </div>
+        <div>
+            <p>How well are you being supported?</p>
+            {getStoreElements.supportReducer}
+            <Link to='/support'>
+                <button className="editButton">Edit</button>
+            </Link>
+        </div>
+        <div>
+            <p>Any comments to leave?</p>
+            {getStoreElements.commentsReducer}
+            <Link to='/comments'>
+                <button className="editButton">Edit</button>
+            </Link>
+        </div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <button onClick={postFeedback} data-testid="next">Submit All Feedback</button>
         </>
     )
 }

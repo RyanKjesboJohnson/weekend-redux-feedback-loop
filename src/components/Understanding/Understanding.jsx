@@ -1,9 +1,11 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 
 export default function Understanding() {
-    let [understandingRating, setUnderstandingRating] = useState('')
+    const getUnderstandingElement = useSelector(store => store.understandingReducer)
+    let [understandingRating, setUnderstandingRating] = useState(getUnderstandingElement)
+    
     const dispatch = useDispatch();
     const history = useHistory();
 
