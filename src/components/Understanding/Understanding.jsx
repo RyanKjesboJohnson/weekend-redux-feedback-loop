@@ -13,12 +13,14 @@ export default function Understanding() {
 
     const postUnderstandingRating = (event) => {
         event.preventDefault();
-        console.log("we are posting an understanding item to store");
+        if(understandingRating < 1 || understandingRating > 5){
+            alert("Please enter a valid number between 1 and 5")
+        }else{
         dispatch({
             type: 'ADD_UNDERSTANDING',
             payload: understandingRating
           })        
-        history.push('/support')
+        history.push('/support')}
 
     }
 
