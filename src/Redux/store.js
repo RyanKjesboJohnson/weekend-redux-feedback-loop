@@ -51,13 +51,23 @@ const commentsReducer = (state = '', action) => {
   return state;
 }
 
+const allFeedback = (state = '', action) => {
+
+    if(action.type === 'ALL_FEEDBACK'){
+        const allPageFeedback = action.payload;
+        return allPageFeedback
+    }
+    return state;
+
+}
   
   const store = createStore(
     combineReducers({
         feelingReducer,
         understandingReducer,
         supportReducer,
-        commentsReducer
+        commentsReducer,
+        allFeedback
 
     }),
     applyMiddleware(logger),

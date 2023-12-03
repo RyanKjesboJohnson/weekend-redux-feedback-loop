@@ -10,8 +10,10 @@ import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
 import ThankYou from '../ThankYou/ThankYou';
+import Admin from '../Admin/Admin';
 
 function App() {
+  
 
   return (
     <div className='App'>
@@ -38,6 +40,9 @@ function App() {
       </Route>
       <Route exact path='/thankyou'>
         <ThankYou />
+      </Route>
+      <Route exact path='/admin'>
+        <Admin />
       </Route>
     </Router>
     </div>
