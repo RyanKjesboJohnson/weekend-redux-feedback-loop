@@ -3,6 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import HorizontalLinearStepper from "../Stepper/Stepper"
+import {styled} from "@mui/material/styles"
+import { Button, Box } from "@mui/material";
+import { Typography } from "@mui/material";
+
+const Div = styled('div')(({ theme }) => ({
+    ...theme.typography.button,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(1),
+  }));
 
 export default function Review() {
     // const [storeElements, setStoreElements] = useState('');
@@ -29,39 +39,42 @@ export default function Review() {
 
     return(
         <>
+        <HorizontalLinearStepper activeStepProp={4}/>
         <h3>Review your feedback!</h3>
-        <div>
-            <p>How are you feeling today?</p>
+        <Box>
+            <p>
+            How are you feeling today?
+            </p>
             {getStoreElements.feelingReducer}
             <Link to='/'>
-                <button className="editButton" >Edit</button>
+                <Button className="editButton" >Edit</Button>
             </Link>
-        </div>
-        <div>
+        </Box>
+        <Div>
             <p>How well are you understanding the content?</p>
             {getStoreElements.understandingReducer}
             <Link to='/understanding'>
-                <button className="editButton">Edit</button>
+                <Button className="editButton">Edit</Button>
             </Link>
-        </div>
-        <div>
+        </Div>
+        <Div>
             <p>How well are you being supported?</p>
             {getStoreElements.supportReducer}
             <Link to='/support'>
-                <button className="editButton">Edit</button>
+                <Button className="editButton">Edit</Button>
             </Link>
-        </div>
-        <div>
+        </Div>
+        <Div>
             <p>Any comments to leave?</p>
             {getStoreElements.commentsReducer}
             <Link to='/comments'>
-                <button className="editButton">Edit</button>
+                <Button className="editButton">Edit</Button>
             </Link>
-        </div>
+        </Div>
         <p></p>
         <p></p>
         <p></p>
-        <button onClick={postFeedback} data-testid="next">Submit All Feedback</button>
+        <Button variant="contained" onClick={postFeedback} data-testid="next">Submit All Feedback</Button>
         </>
     )
 }

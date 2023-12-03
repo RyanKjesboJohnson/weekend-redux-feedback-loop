@@ -1,6 +1,17 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import HorizontalLinearStepper from "../Stepper/Stepper"
+import {styled} from "@mui/material/styles"
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import { Button } from "@mui/material"
+
+const Div = styled('div')(({ theme }) => ({
+    ...theme.typography.button,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(1),
+  }));
 
 export default function Feeling() {
     const getFeelingElement = useSelector(store => store.feelingReducer)
@@ -28,20 +39,22 @@ export default function Feeling() {
 
 
     return(
-        <div>
+        <Div>
+            <HorizontalLinearStepper activeStepProp={0}/>
             <h3>How are you feeling today?</h3>
-                <form onSubmit={(event) => postFeelingRating(event)}>
-                <input
+                <Box component="form" onSubmit={(event) => postFeelingRating(event)}>
+                <TextField
+                variant="filled"
                 onChange={handleFeelingRating}
                 data-testid="input"
                 type='number'
                 value={feelingRating}
                 />
                 <div>
-                    <button data-testid="next" type="submit"> Next
-                    </button>
+                    <Button variant="contained" data-testid="next" type="submit"> Next
+                    </Button>
                 </div>
-            </form>
-        </div>
+            </Box>
+        </Div>
     )
 }

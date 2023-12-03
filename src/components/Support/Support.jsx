@@ -1,6 +1,17 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import HorizontalLinearStepper from "../Stepper/Stepper"
+import {styled} from "@mui/material/styles"
+import { Box } from "@mui/material"
+import TextField from '@mui/material/TextField';
+import {Button} from '@mui/material'
+
+const Div = styled('div')(({ theme }) => ({
+    ...theme.typography.button,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(1),
+  }));
 
 export default function Support() {
     const getSupportElement = useSelector(store => store.supportReducer)
@@ -28,20 +39,22 @@ export default function Support() {
 
 
     return(
-        <div>
+        <Div>
+            <HorizontalLinearStepper activeStepProp={2}/>
             <h3>How well are you being supported?</h3>
-            <form onSubmit={(event) => postSupportRating(event)}>
-                <input
+            <Box component="form" onSubmit={(event) => postSupportRating(event)}>
+                <TextField
+                variant="filled"
                 onChange={handleSupportRating}
                 type='number'
                 value={supportRating}
                 data-testid="input"
                 />
                 <div>
-                    <button data-testid="next" type="submit"> Next
-                    </button>
+                <Button variant="contained" data-testid="next" type="submit"> Next
+                </Button>
                 </div>
-            </form>
-        </div>
+            </Box >
+        </Div>
     )
 }

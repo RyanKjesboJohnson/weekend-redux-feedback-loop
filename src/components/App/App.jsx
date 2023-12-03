@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
+import { CssBaseline, Box, Container, Typography } from '@mui/material';
+
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
@@ -13,11 +15,12 @@ function App() {
 
   return (
     <div className='App'>
+      <CssBaseline />
       <Router>
-        <header className='App-header'>
-          <h1 className='App-title'>Feedback!</h1>
-          <h4>Don't forget it!</h4>
-        </header>
+        <Box className='App-header'>
+          <Typography variant="h2" gutterBottom className='App-title'>Feedback!</Typography>
+          <Typography variant="subtitle1" gutterBottom >Don't forget it!</Typography>
+        </Box>
       <Route exact path='/'>
         <Feeling />
       </Route>
