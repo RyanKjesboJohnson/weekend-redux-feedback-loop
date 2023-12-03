@@ -17,7 +17,7 @@ export default function Review() {
             data: getStoreElements
         }).then((response) => {
             console.log("post request at /feedback received")
-            history.push('/')
+            history.push('/thankyou')
             dispatch({
                 type: 'CLEAR',
               })
@@ -33,7 +33,7 @@ export default function Review() {
         <p>{getStoreElements.understandingReducer}</p>
         <p>{getStoreElements.supportReducer}</p>
         <p>{getStoreElements.commentsReducer}</p>
-        <button onClick={postFeedback}>Submit</button>
+        <button onClick={postFeedback} data-testid="next">Submit</button>
         </>
     )
 }

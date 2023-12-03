@@ -7,6 +7,7 @@ import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
+import ThankYou from '../ThankYou/ThankYou';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
         <Review />
       </Route>
       <Route exact path='/thankyou'>
+        <ThankYou />
       </Route>
     </Router>
     </div>
