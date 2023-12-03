@@ -13,12 +13,14 @@ export default function Support() {
 
     const postSupportRating = (event) => {
         event.preventDefault();
-        console.log("we are posting an Support item to store");
+        if(supportRating < 1 || supportRating > 5){
+            alert("Please enter a valid number between 1 and 5")
+        }else{
         dispatch({
             type: 'ADD_SUPPORT',
             payload: supportRating
           })        
-        history.push('/comments');
+        history.push('/comments')};
 
     }
 

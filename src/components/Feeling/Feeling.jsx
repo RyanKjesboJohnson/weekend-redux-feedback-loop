@@ -13,13 +13,14 @@ export default function Feeling() {
 
     const postFeelingRating = (event) => {
         event.preventDefault();
-        console.log("we are posting an feeling item to store");
-
+        if(feelingRating < 1 || feelingRating > 5){
+            alert("Please enter a valid number between 1 and 5")
+        } else{
         dispatch({
             type: 'ADD_FEELING',
             payload: feelingRating
           })    
-        history.push('/understanding');
+        history.push('/understanding')};
 
     }
 
