@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
+import { Typography, Button, Box, Container } from "@mui/material";
 
 export default function ThankYou(){
     return(
-        <>
-            <h1>Thank you for taking the time to leave feedback!</h1>
-        
+        <Container>
+            <Typography variant="h6">Thank you for taking the time to leave feedback!</Typography>
+        <br></br>
+        <Box>
             <Link to='/'>
-            <button data-testid="next">Leave New Feedback</button>
+            <Button variant="contained" data-testid="next">Leave New Feedback</Button>
             </Link>
-        </>
+        </Box>
+        </Container>
     )
 }
