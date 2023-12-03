@@ -1,9 +1,11 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 
 export default function Support() {
-    let [supportRating, setSupportRating] = useState('')
+    const getSupportElement = useSelector(store => store.supportReducer)
+    let [supportRating, setSupportRating] = useState(getSupportElement)
+    
     const dispatch = useDispatch();
     const history = useHistory();
 

@@ -1,9 +1,10 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 
 export default function Comments() {
-    let [commentsRating, setCommentsRating] = useState('')
+    const getCommentElement = useSelector(store => store.commentsReducer)
+    let [commentsRating, setCommentsRating] = useState(getCommentElement)
     const dispatch = useDispatch();
     const history = useHistory();
 
